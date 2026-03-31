@@ -5,219 +5,234 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OpenSpec — База знаний</title>
 <style>
-  :root {
-    --bg: #ffffff;
-    --bg2: #f7f6f3;
-    --bg3: #f0efe9;
-    --text: #1a1a18;
-    --text2: #6b6a64;
-    --text3: #9e9d97;
-    --border: rgba(0,0,0,0.1);
-    --border2: rgba(0,0,0,0.18);
-    --purple: #7F77DD; --purple-bg: #EEEDFE; --purple-text: #3C3489;
-    --teal: #1D9E75;   --teal-bg: #E1F5EE;   --teal-text: #0F6E56;
-    --amber: #EF9F27;  --amber-bg: #FAEEDA;  --amber-text: #633806;
-    --blue: #378ADD;   --blue-bg: #E6F1FB;   --blue-text: #0C447C;
-    --gray-bg: #F1EFE8; --gray-text: #444441;
-    --coral-bg: #FAECE7; --coral-text: #712B13;
-    --green-bg: #EAF3DE; --green-text: #3B6D11;
-    --radius: 8px; --radius-lg: 12px;
-    --shadow: 0 1px 4px rgba(0,0,0,0.07);
-  }
-  [data-theme="dark"] {
-    --bg: #1a1a18; --bg2: #252522; --bg3: #2e2e2a;
-    --text: #f0efe9; --text2: #a0a09a; --text3: #6b6a64;
-    --border: rgba(255,255,255,0.1); --border2: rgba(255,255,255,0.18);
-    --purple-bg: #26215C; --purple-text: #CECBF6;
-    --teal-bg: #04342C; --teal-text: #9FE1CB;
-    --amber-bg: #412402; --amber-text: #FAC775;
-    --blue-bg: #042C53; --blue-text: #B5D4F4;
-    --gray-bg: #2C2C2A; --gray-text: #D3D1C7;
-    --coral-bg: #4A1B0C; --coral-text: #F5C4B3;
-    --green-bg: #173404; --green-text: #C0DD97;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;transition:background .2s,color .2s}
+:root {
+  --bg:#ffffff;--bg2:#f7f6f3;--bg3:#f0efe9;
+  --text:#1a1a18;--text2:#6b6a64;--text3:#9e9d97;
+  --border:rgba(0,0,0,0.1);--border2:rgba(0,0,0,0.2);
+  --purple:#7F77DD;--purple-bg:#EEEDFE;--purple-text:#3C3489;
+  --teal:#1D9E75;--teal-bg:#E1F5EE;--teal-text:#0F6E56;
+  --amber:#EF9F27;--amber-bg:#FAEEDA;--amber-text:#633806;
+  --blue:#378ADD;--blue-bg:#E6F1FB;--blue-text:#0C447C;
+  --gray-bg:#F1EFE8;--gray-text:#444441;
+  --coral-bg:#FAECE7;--coral-text:#712B13;
+  --green-bg:#EAF3DE;--green-text:#3B6D11;
+  --r:8px;--rl:12px;
+}
+[data-theme="dark"] {
+  --bg:#1a1a18;--bg2:#252522;--bg3:#2e2e2a;
+  --text:#f0efe9;--text2:#a0a09a;--text3:#6b6a64;
+  --border:rgba(255,255,255,0.1);--border2:rgba(255,255,255,0.2);
+  --purple-bg:#26215C;--purple-text:#CECBF6;
+  --teal-bg:#04342C;--teal-text:#9FE1CB;
+  --amber-bg:#412402;--amber-text:#FAC775;
+  --blue-bg:#042C53;--blue-text:#B5D4F4;
+  --gray-bg:#2C2C2A;--gray-text:#D3D1C7;
+  --coral-bg:#4A1B0C;--coral-text:#F5C4B3;
+  --green-bg:#173404;--green-text:#C0DD97;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;transition:background .2s,color .2s}
 
-  /* HEADER */
-  .header{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;height:56px}
-  .logo{display:flex;align-items:center;gap:10px}
-  .logo-mark{width:28px;height:28px;background:var(--purple-bg);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--purple-text)}
-  .logo-name{font-size:15px;font-weight:600;color:var(--text)}
-  .logo-tag{font-size:11px;color:var(--text3);margin-left:2px}
-  .header-right{display:flex;align-items:center;gap:8px}
-  .btn-sm{padding:5px 12px;font-size:12px;font-weight:500;border-radius:var(--radius);cursor:pointer;border:0.5px solid var(--border2);background:transparent;color:var(--text2);transition:all .15s}
-  .btn-sm:hover{background:var(--bg2);color:var(--text)}
-  .theme-btn{padding:5px 10px;font-size:14px}
+/* ── HEADER ── */
+.hdr{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:0.5px solid var(--border);height:58px;display:flex;align-items:center}
+.hdr-inner{width:100%;max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:30px;height:30px;background:var(--purple-bg);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--purple-text)}
+.logo-name{font-size:15px;font-weight:700;color:var(--text)}
+.logo-tag{font-size:11px;color:var(--text3);margin-left:2px}
+.hdr-btns{display:flex;align-items:center;gap:6px}
+.btn{padding:5px 12px;font-size:12px;font-weight:500;border-radius:var(--r);cursor:pointer;border:0.5px solid var(--border2);background:transparent;color:var(--text2);transition:all .15s;text-decoration:none;display:inline-flex;align-items:center}
+.btn:hover{background:var(--bg2);color:var(--text)}
 
-  /* LAYOUT */
-  .layout{display:flex;min-height:calc(100vh - 56px)}
+/* ── PAGE ── */
+.page{display:flex;max-width:1400px;margin:0 auto;min-height:calc(100vh - 58px)}
 
-  /* SIDEBAR */
-  .sidebar{width:220px;flex-shrink:0;border-right:0.5px solid var(--border);padding:1.25rem 0;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto}
-  .sidebar-section{font-size:10.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;padding:0 1rem .4rem;margin-top:1rem}
-  .sidebar-section:first-child{margin-top:0}
-  .nav-item{display:flex;align-items:center;gap:8px;padding:7px 1rem;font-size:13px;color:var(--text2);cursor:pointer;border-left:2px solid transparent;transition:all .15s;user-select:none}
-  .nav-item:hover{background:var(--bg2);color:var(--text)}
-  .nav-item.active{background:var(--purple-bg);color:var(--purple-text);border-left-color:var(--purple);font-weight:500}
-  .nav-dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.5;flex-shrink:0}
+/* ── SIDEBAR ── */
+.sidebar{width:240px;flex-shrink:0;border-right:0.5px solid var(--border);padding:1.25rem 0;position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto}
+.sb-section{font-size:10.5px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;padding:0 1rem .4rem;margin-top:1.25rem}
+.sb-section:first-child{margin-top:0}
+.sb-item{display:flex;align-items:center;gap:8px;padding:7px 1rem;font-size:13px;color:var(--text2);cursor:pointer;border-left:2px solid transparent;transition:all .15s;user-select:none}
+.sb-item:hover{background:var(--bg2);color:var(--text)}
+.sb-item.active{background:var(--purple-bg);color:var(--purple-text);border-left-color:var(--purple);font-weight:500}
+.sb-dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.5;flex-shrink:0}
 
-  /* CONTENT */
-  .content{flex:1;padding:2rem 2.5rem;max-width:820px;overflow-x:hidden}
-  .pane{display:none}.pane.active{display:block}
+/* ── CONTENT ── */
+.content{flex:1;min-width:0;padding:2.5rem 3.5rem;overflow-x:hidden}
+.pane{display:none}.pane.active{display:block}
 
-  /* TYPOGRAPHY */
-  h1{font-size:22px;font-weight:600;margin-bottom:.4rem}
-  h2{font-size:17px;font-weight:600;margin:2rem 0 .6rem}
-  h2:first-child{margin-top:0}
-  h3{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin:1.5rem 0 .75rem}
-  h3:first-child{margin-top:0}
-  p{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:.75rem}
-  p:last-child{margin-bottom:0}
+/* ── TYPOGRAPHY ── */
+h1{font-size:26px;font-weight:700;margin-bottom:.5rem;line-height:1.3}
+h2{font-size:19px;font-weight:600;margin:2.25rem 0 .7rem;line-height:1.35}
+h2:first-child{margin-top:0}
+h3{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin:1.75rem 0 .85rem}
+h3:first-child{margin-top:0}
+p{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:.85rem}
+p:last-child{margin-bottom:0}
+strong{font-weight:600;color:var(--text)}
+hr{border:none;border-top:0.5px solid var(--border);margin:1.75rem 0}
 
-  /* BADGES */
-  .badge{display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:2px 8px;border-radius:5px;white-space:nowrap;line-height:1.6}
-  .b-purple{background:var(--purple-bg);color:var(--purple-text)}
-  .b-teal{background:var(--teal-bg);color:var(--teal-text)}
-  .b-amber{background:var(--amber-bg);color:var(--amber-text)}
-  .b-blue{background:var(--blue-bg);color:var(--blue-text)}
-  .b-gray{background:var(--gray-bg);color:var(--gray-text)}
-  .b-coral{background:var(--coral-bg);color:var(--coral-text)}
-  .b-green{background:var(--green-bg);color:var(--green-text)}
+/* ── BADGES ── */
+.badge{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:2px 8px;border-radius:5px;white-space:nowrap;line-height:1.6}
+.b-purple{background:var(--purple-bg);color:var(--purple-text)}
+.b-teal{background:var(--teal-bg);color:var(--teal-text)}
+.b-amber{background:var(--amber-bg);color:var(--amber-text)}
+.b-blue{background:var(--blue-bg);color:var(--blue-text)}
+.b-gray{background:var(--gray-bg);color:var(--gray-text)}
+.b-coral{background:var(--coral-bg);color:var(--coral-text)}
+.b-green{background:var(--green-bg);color:var(--green-text)}
 
-  /* CALLOUTS */
-  .note{background:var(--teal-bg);border-left:3px solid var(--teal);border-radius:0 var(--radius) var(--radius) 0;padding:10px 14px;font-size:13px;color:var(--teal-text);margin-bottom:1rem;line-height:1.6}
-  .tip{background:var(--blue-bg);border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;padding:10px 14px;font-size:13px;color:var(--blue-text);margin-bottom:1rem;line-height:1.6}
-  .warn{background:var(--amber-bg);border-left:3px solid var(--amber);border-radius:0 var(--radius) var(--radius) 0;padding:10px 14px;font-size:13px;color:var(--amber-text);margin-bottom:1rem;line-height:1.6}
+/* ── CALLOUTS ── */
+.note{background:var(--teal-bg);border-left:3px solid var(--teal);border-radius:0 var(--r) var(--r) 0;padding:10px 14px;font-size:13.5px;color:var(--teal-text);margin-bottom:1rem;line-height:1.65}
+.tip{background:var(--blue-bg);border-left:3px solid var(--blue);border-radius:0 var(--r) var(--r) 0;padding:10px 14px;font-size:13.5px;color:var(--blue-text);margin-bottom:1rem;line-height:1.65}
+.warn{background:var(--amber-bg);border-left:3px solid var(--amber);border-radius:0 var(--r) var(--r) 0;padding:10px 14px;font-size:13.5px;color:var(--amber-text);margin-bottom:1rem;line-height:1.65}
 
-  /* CODE */
-  code{font-family:'SF Mono','Fira Code',monospace;font-size:11.5px;background:var(--bg2);border:0.5px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--text)}
-  .cb{font-family:'SF Mono','Fira Code',monospace;font-size:12px;background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:14px 16px;line-height:1.8;color:var(--text);margin-bottom:1rem;overflow-x:auto;white-space:pre;tab-size:2}
-  .cb .c{color:var(--text3)}
-  .cb .k{color:var(--teal-text)}
-  .cb .v{color:var(--purple-text)}
+/* ── CODE ── */
+code{font-family:'SF Mono','Fira Code',monospace;font-size:12px;background:var(--bg2);border:0.5px solid var(--border);border-radius:4px;padding:1px 6px;color:var(--text)}
+.cb{font-family:'SF Mono','Fira Code',monospace;font-size:12.5px;background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--r);padding:16px 18px;line-height:1.9;color:var(--text);margin-bottom:1.1rem;overflow-x:auto;white-space:pre;tab-size:2}
+.cb .c{color:var(--text3)}
+.cb .k{color:var(--teal-text)}
+.cb .v{color:var(--purple-text)}
 
-  /* TABLE */
-  .tbl-wrap{overflow-x:auto;margin-bottom:1.25rem;border-radius:var(--radius);border:0.5px solid var(--border)}
-  table{width:100%;border-collapse:collapse;font-size:13px}
-  th{text-align:left;padding:8px 12px;font-weight:500;font-size:11.5px;color:var(--text3);background:var(--bg2);white-space:nowrap;border-bottom:0.5px solid var(--border)}
-  td{padding:9px 12px;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.55}
-  tr:last-child td{border-bottom:none}
-  tr:hover td{background:var(--bg2)}
+/* ── TABLE ── */
+.tbl{overflow-x:auto;margin-bottom:1.4rem;border-radius:var(--r);border:0.5px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;padding:9px 14px;font-weight:600;font-size:11.5px;color:var(--text3);background:var(--bg2);white-space:nowrap;border-bottom:0.5px solid var(--border)}
+td{padding:10px 14px;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.6}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--bg2)}
 
-  /* CARDS */
-  .card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1.1rem 1.25rem;margin-bottom:.75rem;box-shadow:var(--shadow)}
-  .card-title{font-size:14px;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:8px}
-  .card-desc{font-size:13px;color:var(--text2);line-height:1.55}
+/* ── CARDS ── */
+.card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--rl);padding:1.1rem 1.25rem;margin-bottom:.85rem}
+.card-title{font-size:14px;font-weight:600;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.card-desc{font-size:13.5px;color:var(--text2);line-height:1.6}
 
-  /* METRICS */
-  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:1.25rem}
-  .metric{background:var(--bg2);border-radius:var(--radius);padding:.9rem 1rem;border:0.5px solid var(--border)}
-  .metric-val{font-size:22px;font-weight:700;margin-bottom:2px;color:var(--text)}
-  .metric-lbl{font-size:12px;color:var(--text3)}
+/* ── METRICS ── */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.4rem}
+.metric{background:var(--bg2);border-radius:var(--r);padding:.9rem 1rem;border:0.5px solid var(--border)}
+.metric-val{font-size:24px;font-weight:700;margin-bottom:2px}
+.metric-lbl{font-size:12px;color:var(--text3)}
 
-  /* FLOW */
-  .flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:.75rem}
-  .fbox{background:var(--bg2);border:0.5px solid var(--border2);border-radius:var(--radius);padding:5px 12px;font-size:13px;font-weight:500;white-space:nowrap}
-  .farr{color:var(--text3);font-size:16px}
+/* ── PHIL ── */
+.phil-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1.25rem}
+.phil-box{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--r);padding:11px 13px}
+.phil-title{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:3px}
+.phil-sub{font-size:12px;color:var(--text3);line-height:1.45}
 
-  /* STEPS */
-  .step{display:flex;gap:12px;margin-bottom:1rem}
-  .snum{min-width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;margin-top:1px}
-  .stitle{font-size:13px;font-weight:600;margin-bottom:3px}
-  .sdesc{font-size:12.5px;color:var(--text2);line-height:1.55}
+/* ── FLOW ── */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:.85rem}
+.fbox{background:var(--bg2);border:0.5px solid var(--border2);border-radius:var(--r);padding:5px 13px;font-size:13px;font-weight:500;white-space:nowrap}
+.farr{color:var(--text3);font-size:16px}
 
-  /* TAGS */
-  .tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem}
+/* ── STEPS ── */
+.step{display:flex;gap:12px;margin-bottom:1rem}
+.snum{min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px}
+.stitle{font-size:14px;font-weight:600;margin-bottom:3px}
+.sdesc{font-size:13px;color:var(--text2);line-height:1.6}
 
-  /* PHIL GRID */
-  .phil-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:8px;margin-bottom:1.25rem}
-  .phil-box{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius);padding:10px 12px}
-  .phil-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px}
-  .phil-sub{font-size:12px;color:var(--text3);line-height:1.45}
+/* ── TAGS ── */
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem}
 
-  /* FAQ */
-  .faq-item{border-bottom:0.5px solid var(--border);padding:12px 0;cursor:pointer}
-  .faq-item:last-child{border-bottom:none}
-  .faq-q{font-size:13px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:8px;user-select:none}
-  .faq-q-text{flex:1}
-  .faq-arrow{color:var(--text3);font-size:12px;transition:transform .2s;flex-shrink:0}
-  .faq-item.open .faq-arrow{transform:rotate(90deg)}
-  .faq-a{font-size:13px;color:var(--text2);line-height:1.65;margin-top:8px;display:none}
-  .faq-item.open .faq-a{display:block}
+/* ── HERO ── */
+.hero{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--rl);padding:1.5rem;margin-bottom:1.75rem;display:flex;align-items:flex-start;gap:1.25rem}
+.hero-icon{width:52px;height:52px;background:var(--purple-bg);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.hero-title{font-size:18px;font-weight:700;margin-bottom:5px}
+.hero-sub{font-size:14px;color:var(--text2);line-height:1.65}
 
-  /* DIVIDER */
-  hr{border:none;border-top:0.5px solid var(--border);margin:1.5rem 0}
+/* ── VS GRID ── */
+.vs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:1rem}
 
-  /* COMPARE */
-  .vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem}
-  @media(max-width:600px){.vs-grid{grid-template-columns:1fr}}
+/* ── FAQ ── */
+.faq-item{border-bottom:0.5px solid var(--border);padding:13px 0;cursor:pointer}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-size:14px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:8px;user-select:none}
+.faq-arrow{color:var(--text3);font-size:11px;transition:transform .2s;flex-shrink:0}
+.faq-item.open .faq-arrow{transform:rotate(90deg)}
+.faq-a{font-size:13.5px;color:var(--text2);line-height:1.7;margin-top:9px;display:none}
+.faq-item.open .faq-a{display:block}
 
-  /* SCROLLBAR */
-  ::-webkit-scrollbar{width:5px;height:5px}
-  ::-webkit-scrollbar-track{background:transparent}
-  ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:10px}
+/* ── FOOTER ── */
+.footer{border-top:0.5px solid var(--border);padding:1rem 3.5rem;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--text3);flex-wrap:wrap;gap:8px;max-width:1400px;margin:0 auto;width:100%}
+.footer a{color:var(--text3);text-decoration:none}.footer a:hover{color:var(--text)}
+.footer-wrap{border-top:0.5px solid var(--border)}
 
-  /* HERO SECTION */
-  .hero{background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem;display:flex;align-items:flex-start;gap:1.25rem}
-  .hero-icon{width:48px;height:48px;background:var(--purple-bg);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-  .hero-title{font-size:17px;font-weight:700;margin-bottom:4px}
-  .hero-sub{font-size:13px;color:var(--text2);line-height:1.6}
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:10px}
 
-  /* RESPONSIVE */
-  @media(max-width:768px){
-    .sidebar{display:none}
-    .content{padding:1.25rem}
-    .header{padding:0 1rem}
-    .hero{flex-direction:column;gap:.75rem}
-  }
+/* ── LARGE SCREENS ── */
+@media(min-width:1400px){
+  body{font-size:16px}
+  h1{font-size:30px}
+  h2{font-size:21px}
+  p{font-size:15px}
+  table{font-size:14.5px}
+  .cb{font-size:13.5px}
+  .card-desc,.sdesc,.note,.tip,.warn{font-size:14.5px}
+}
 
-  /* FOOTER */
-  .footer{border-top:0.5px solid var(--border);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--text3);flex-wrap:wrap;gap:8px}
-  .footer a{color:var(--text3);text-decoration:none}.footer a:hover{color:var(--text)}
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .sidebar{display:none}
+  .content{padding:1.75rem 1.5rem}
+  .phil-grid{grid-template-columns:repeat(2,1fr)}
+  .grid4{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+  .hdr-inner{padding:0 1rem}
+  .content{padding:1.25rem 1rem}
+  h1{font-size:21px}
+  h2{font-size:16px}
+  .phil-grid,.grid4,.vs-grid{grid-template-columns:1fr}
+  .hero{flex-direction:column;gap:.75rem}
+}
 </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="logo">
-    <div class="logo-mark">OS</div>
-    <div>
-      <span class="logo-name">OpenSpec</span>
-      <span class="logo-tag">База знаний</span>
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-inner">
+    <div class="logo">
+      <div class="logo-mark">OS</div>
+      <div>
+        <span class="logo-name">OpenSpec</span>
+        <span class="logo-tag">База знаний</span>
+      </div>
     </div>
-  </div>
-  <div class="header-right">
-    <a href="https://github.com/Fission-AI/OpenSpec" target="_blank"><button class="btn-sm">GitHub ↗</button></a>
-    <a href="https://openspec.dev" target="_blank"><button class="btn-sm">openspec.dev ↗</button></a>
-    <button class="btn-sm theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <div class="hdr-btns">
+      <a class="btn" href="https://github.com/Fission-AI/OpenSpec" target="_blank">GitHub ↗</a>
+      <a class="btn" href="https://openspec.dev" target="_blank">openspec.dev ↗</a>
+      <button class="btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    </div>
   </div>
 </header>
 
-<div class="layout">
+<!-- PAGE -->
+<div class="page">
+
+  <!-- SIDEBAR -->
   <nav class="sidebar">
-    <div class="sidebar-section">Введение</div>
-    <div class="nav-item active" onclick="nav('overview',this)"><div class="nav-dot"></div>Обзор и философия</div>
-    <div class="nav-item" onclick="nav('install',this)"><div class="nav-dot"></div>Установка</div>
-
-    <div class="sidebar-section">Структура</div>
-    <div class="nav-item" onclick="nav('structure',this)"><div class="nav-dot"></div>Файлы и папки</div>
-    <div class="nav-item" onclick="nav('artifacts',this)"><div class="nav-dot"></div>Артефакты</div>
-
-    <div class="sidebar-section">Работа с OpenSpec</div>
-    <div class="nav-item" onclick="nav('commands',this)"><div class="nav-dot"></div>Команды OPSX</div>
-    <div class="nav-item" onclick="nav('workflow',this)"><div class="nav-dot"></div>Workflow и flow</div>
-    <div class="nav-item" onclick="nav('profiles',this)"><div class="nav-dot"></div>Профили</div>
-
-    <div class="sidebar-section">Конфигурация</div>
-    <div class="nav-item" onclick="nav('config',this)"><div class="nav-dot"></div>config.yaml</div>
-    <div class="nav-item" onclick="nav('cli',this)"><div class="nav-dot"></div>CLI команды</div>
-
-    <div class="sidebar-section">Прочее</div>
-    <div class="nav-item" onclick="nav('compare',this)"><div class="nav-dot"></div>Сравнение</div>
-    <div class="nav-item" onclick="nav('faq',this)"><div class="nav-dot"></div>FAQ</div>
+    <div class="sb-section">Введение</div>
+    <div class="sb-item active" onclick="nav('overview',this)"><div class="sb-dot"></div>Обзор и философия</div>
+    <div class="sb-item" onclick="nav('install',this)"><div class="sb-dot"></div>Установка</div>
+    <div class="sb-section">Структура</div>
+    <div class="sb-item" onclick="nav('structure',this)"><div class="sb-dot"></div>Файлы и папки</div>
+    <div class="sb-item" onclick="nav('artifacts',this)"><div class="sb-dot"></div>Артефакты</div>
+    <div class="sb-section">Работа</div>
+    <div class="sb-item" onclick="nav('commands',this)"><div class="sb-dot"></div>Команды OPSX</div>
+    <div class="sb-item" onclick="nav('workflow',this)"><div class="sb-dot"></div>Workflow и flow</div>
+    <div class="sb-item" onclick="nav('profiles',this)"><div class="sb-dot"></div>Профили</div>
+    <div class="sb-section">Конфигурация</div>
+    <div class="sb-item" onclick="nav('config',this)"><div class="sb-dot"></div>config.yaml</div>
+    <div class="sb-item" onclick="nav('cli',this)"><div class="sb-dot"></div>CLI команды</div>
+    <div class="sb-section">Прочее</div>
+    <div class="sb-item" onclick="nav('compare',this)"><div class="sb-dot"></div>Сравнение</div>
+    <div class="sb-item" onclick="nav('faq',this)"><div class="sb-dot"></div>FAQ</div>
   </nav>
 
+  <!-- CONTENT -->
   <main class="content">
 
     <!-- ОБЗОР -->
@@ -229,14 +244,12 @@
           <div class="hero-sub">OpenSpec — лёгкий фреймворк, который заставляет тебя и AI договориться о том, <strong>что строить</strong>, прежде чем будет написана хоть одна строка кода. Спецификации живут в репозитории вместе с кодом.</div>
         </div>
       </div>
-
-      <div class="grid2">
+      <div class="grid4">
         <div class="metric"><div class="metric-val">23.8k</div><div class="metric-lbl">звёзд на GitHub</div></div>
         <div class="metric"><div class="metric-val">20+</div><div class="metric-lbl">AI-инструментов</div></div>
         <div class="metric"><div class="metric-val">MIT</div><div class="metric-lbl">лицензия</div></div>
         <div class="metric"><div class="metric-val">Node 20+</div><div class="metric-lbl">требование</div></div>
       </div>
-
       <h3>Философия</h3>
       <div class="phil-grid">
         <div class="phil-box"><div class="phil-title">Fluid, не rigid</div><div class="phil-sub">Без жёстких фаз — обновляй что угодно, когда угодно</div></div>
@@ -244,29 +257,13 @@
         <div class="phil-box"><div class="phil-title">Brownfield-first</div><div class="phil-sub">Сделан для живых проектов, не только для нового кода</div></div>
         <div class="phil-box"><div class="phil-title">Easy, не complex</div><div class="phil-sub">Минимум процесса, максимум пользы</div></div>
       </div>
-
       <h3>Три проблемы которые решает</h3>
       <div class="card"><div class="card-title"><span class="badge b-coral">Проблема 1</span> Контекст умирает вместе с чатом</div><div class="card-desc">AI не помнит что обсуждалось вчера. OpenSpec фиксирует договорённости в файлах, которые живут в репозитории постоянно.</div></div>
       <div class="card"><div class="card-title"><span class="badge b-coral">Проблема 2</span> AI пишет не то что нужно</div><div class="card-desc">Без спецификации AI интерпретирует задачу по-своему. Spec — точка выравнивания между человеком и AI перед началом работы.</div></div>
       <div class="card"><div class="card-title"><span class="badge b-coral">Проблема 3</span> Ревью кода без понимания зачем</div><div class="card-desc">Reviewer смотрит на код, но не знает что менялось в требованиях. Spec delta показывает это явно — до просмотра кода.</div></div>
-
       <h3>Поддерживаемые AI-инструменты</h3>
-      <div class="tag-row">
-        <span class="badge b-purple">Claude Code</span>
-        <span class="badge b-purple">Cursor</span>
-        <span class="badge b-purple">Windsurf</span>
-        <span class="badge b-purple">GitHub Copilot</span>
-        <span class="badge b-gray">Gemini CLI</span>
-        <span class="badge b-gray">Codex</span>
-        <span class="badge b-gray">Cline</span>
-        <span class="badge b-gray">RooCode</span>
-        <span class="badge b-gray">Amazon Q</span>
-        <span class="badge b-gray">Kilo Code</span>
-        <span class="badge b-gray">OpenCode</span>
-        <span class="badge b-gray">Antigravity</span>
-        <span class="badge b-gray">Qoder</span>
-        <span class="badge b-gray">Auggie CLI</span>
-        <span class="badge b-gray">+ ещё 7</span>
+      <div class="tags">
+        <span class="badge b-purple">Claude Code</span><span class="badge b-purple">Cursor</span><span class="badge b-purple">Windsurf</span><span class="badge b-purple">GitHub Copilot</span><span class="badge b-gray">Gemini CLI</span><span class="badge b-gray">Codex</span><span class="badge b-gray">Cline</span><span class="badge b-gray">RooCode</span><span class="badge b-gray">Amazon Q</span><span class="badge b-gray">Kilo Code</span><span class="badge b-gray">OpenCode</span><span class="badge b-gray">Antigravity</span><span class="badge b-gray">Qoder</span><span class="badge b-gray">Auggie CLI</span><span class="badge b-gray">+ ещё 7</span>
       </div>
     </div>
 
@@ -279,27 +276,27 @@
       <h2>2. Инициализировать в проекте</h2>
       <div class="cb">cd your-project
 openspec init</div>
-      <p>В процессе init тебя спросят какой AI-инструмент использовать (Claude Code, Cursor, Windsurf и т.д.). OpenSpec создаст нужные конфиги автоматически.</p>
-      <h2>3. Запустить онбординг (опционально)</h2>
+      <p>В процессе init тебя спросят какой AI-инструмент использовать. OpenSpec создаст нужные конфиги автоматически.</p>
+      <h2>3. Запустить онбординг (рекомендуется)</h2>
       <div class="cb">/opsx:onboard</div>
-      <p>Интерактивный тьюториал на реальной кодовой базе. 11 фаз, ~15 минут. Рекомендован для первого знакомства.</p>
+      <p>Интерактивный тьюториал на реальной кодовой базе. 11 фаз, ~15 минут.</p>
       <h2>Обновление</h2>
       <div class="cb"><span class="c"># Обновить пакет</span>
 npm install -g @fission-ai/openspec@latest
 
 <span class="c"># Регенерировать инструкции AI в проекте</span>
 openspec update</div>
-      <div class="warn">После обновления пакета всегда запускай <code>openspec update</code> внутри каждого проекта — это обновляет skills и slash-команды для AI-инструмента.</div>
+      <div class="warn">После обновления пакета всегда запускай <code>openspec update</code> внутри каждого проекта — обновляет skills и slash-команды.</div>
       <h2>Рекомендуемые модели</h2>
-      <div class="tbl-wrap"><table>
+      <div class="tbl"><table>
         <thead><tr><th>Задача</th><th>Рекомендация</th><th>Почему</th></tr></thead>
         <tbody>
-          <tr><td>Планирование (explore, propose)</td><td>Claude Opus 4.5 / GPT 5</td><td>Качество specs напрямую зависит от мощи модели</td></tr>
-          <tr><td>Реализация (apply)</td><td>Claude Opus 4.5 / GPT 5</td><td>Сложные задачи требуют глубокого понимания контекста</td></tr>
+          <tr><td>Планирование (explore, propose)</td><td>Claude Opus 4.5 / GPT 5</td><td>Качество specs зависит от мощи модели</td></tr>
+          <tr><td>Реализация (apply)</td><td>Claude Opus 4.5 / GPT 5</td><td>Сложные задачи требуют глубокого контекста</td></tr>
           <tr><td>Простые правки</td><td>Любая модель</td><td>—</td></tr>
         </tbody>
       </table></div>
-      <div class="tip">Перед <code>/opsx:apply</code> очищай контекст чата. OpenSpec работает лучше с чистым контекстным окном.</div>
+      <div class="tip">Перед <code>/opsx:apply</code> очищай контекст чата — OpenSpec работает лучше с чистым окном.</div>
     </div>
 
     <!-- СТРУКТУРА -->
@@ -311,52 +308,38 @@ openspec update</div>
 ├── openspec/
 │   ├── <span class="k">config.yaml</span>              <span class="c">← стек, соглашения, правила проекта</span>
 │   ├── <span class="k">specs/</span>                   <span class="c">← живые спецификации (source of truth)</span>
-│   │   ├── auth/
-│   │   │   └── spec.md          <span class="c">← спека домена "auth"</span>
-│   │   └── payments/
-│   │       └── spec.md
+│   │   ├── auth/spec.md         <span class="c">← спека домена "auth"</span>
+│   │   └── payments/spec.md
 │   └── <span class="k">changes/</span>                 <span class="c">← активные изменения</span>
-│       ├── add-dark-mode/       <span class="c">← папка одного изменения</span>
+│       ├── add-dark-mode/
 │       │   ├── .openspec.yaml   <span class="c">← метаданные (схема, статус)</span>
 │       │   ├── proposal.md      <span class="c">← зачем и что</span>
 │       │   ├── design.md        <span class="c">← техническое решение</span>
-│       │   ├── tasks.md         <span class="c">← чеклист задач [x]/[ ]</span>
-│       │   └── specs/           <span class="c">← дельта требований</span>
-│       │       └── ui/spec.md
-│       └── archive/             <span class="c">← завершённые изменения</span>
-│           └── 2026-03-31-add-dark-mode/
+│       │   ├── tasks.md         <span class="c">← чеклист [x]/[ ]</span>
+│       │   └── specs/ui/spec.md <span class="c">← дельта требований</span>
+│       └── archive/             <span class="c">← завершённые изменения с датой</span>
 │
-└── .claude/                     <span class="c">← (если выбран Claude Code)</span>
+└── .claude/                     <span class="c">← конфиги для Claude Code</span>
     ├── skills/                  <span class="c">← авто-детектируемые навыки</span>
-    │   ├── openspec-propose/SKILL.md
-    │   ├── openspec-explore/SKILL.md
-    │   ├── openspec-apply-change/SKILL.md
-    │   └── openspec-archive-change/SKILL.md
-    └── commands/opsx/           <span class="c">← slash-команды</span>
-        ├── propose.md
-        ├── explore.md
-        ├── apply.md
-        └── archive.md</div>
-
+    └── commands/opsx/           <span class="c">← slash-команды</span></div>
       <h2>Назначение папок</h2>
-      <div class="tbl-wrap"><table>
+      <div class="tbl"><table>
         <thead><tr><th>Путь</th><th>Роль</th><th>Кто меняет</th></tr></thead>
         <tbody>
           <tr><td><code>openspec/specs/</code></td><td>Source of truth — текущие требования всей системы. По доменам.</td><td>AI через archive</td></tr>
-          <tr><td><code>openspec/changes/</code></td><td>Активная работа. Каждая задача = своя папка с 4 артефактами.</td><td>AI создаёт, человек правит</td></tr>
-          <tr><td><code>openspec/changes/archive/</code></td><td>История. Завершённые изменения с датой в имени папки.</td><td>AI при /opsx:archive</td></tr>
+          <tr><td><code>openspec/changes/</code></td><td>Активная работа. Каждая задача — своя папка с 4 артефактами.</td><td>AI создаёт, человек правит</td></tr>
+          <tr><td><code>openspec/changes/archive/</code></td><td>История завершённых изменений с датой в имени.</td><td>AI при /opsx:archive</td></tr>
           <tr><td><code>openspec/config.yaml</code></td><td>Мозг проекта — стек, соглашения, правила. Инжектируется в каждый запрос.</td><td>Человек</td></tr>
           <tr><td><code>.claude/skills/</code></td><td>SKILL.md которые Claude Code авто-детектирует как навыки.</td><td>Генерирует CLI</td></tr>
-          <tr><td><code>.claude/commands/opsx/</code></td><td>Slash-команды для конкретного AI-инструмента.</td><td>Генерирует CLI</td></tr>
+          <tr><td><code>.claude/commands/opsx/</code></td><td>Slash-команды для AI-инструмента.</td><td>Генерирует CLI</td></tr>
         </tbody>
       </table></div>
-
       <h2>Структура одного change</h2>
-      <div class="tbl-wrap"><table>
+      <div class="tbl"><table>
         <thead><tr><th>Файл</th><th>Назначение</th><th>Создаётся после</th></tr></thead>
         <tbody>
           <tr><td><code>.openspec.yaml</code></td><td>Метаданные: schema, статус артефактов, дата</td><td>Сразу при new/propose</td></tr>
-          <tr><td><code>proposal.md</code></td><td>Intent (зачем), Scope (что входит/не входит), Approach</td><td>Первый</td></tr>
+          <tr><td><code>proposal.md</code></td><td>Intent (зачем), Scope (что входит/нет), Approach</td><td>Первый</td></tr>
           <tr><td><code>specs/*.md</code></td><td>Дельта требований — только изменения (ADDED/MODIFIED)</td><td>После proposal</td></tr>
           <tr><td><code>design.md</code></td><td>Архитектурные решения, trade-offs, диаграммы</td><td>После proposal</td></tr>
           <tr><td><code>tasks.md</code></td><td>Фазы и чеклист [ ]. AI ставит [x] при выполнении.</td><td>После specs</td></tr>
@@ -367,9 +350,8 @@ openspec update</div>
     <!-- АРТЕФАКТЫ -->
     <div class="pane" id="pane-artifacts">
       <h1>Артефакты — подробно</h1>
-
       <h2>proposal.md — Зачем и что делаем</h2>
-      <p>Создаётся первым. Определяет намерение и границы задачи. Ключевой артефакт для выравнивания понимания.</p>
+      <p>Создаётся первым. Определяет намерение и границы задачи.</p>
       <div class="cb"># Proposal: Add Dark Mode
 
 ## Intent
@@ -382,17 +364,16 @@ openspec update</div>
 - Сохранение выбора в localStorage
 
 ### Out of scope
-- Тёмная тема для email-уведомлений (отдельная задача)
-- Мобильное приложение
+- Тёмная тема для email-уведомлений
 
 ## Approach
 CSS custom properties + React Context для управления состоянием.
 
 ## Open questions
-- Нужна ли анимация при переключении темы?</div>
+- Нужна ли анимация при переключении?</div>
 
       <h2>specs/*.md — Дельта требований</h2>
-      <p>Хранит только <strong>изменения</strong> относительно текущих specs. Маркеры: ADDED / MODIFIED / REMOVED. При archive — мержится в основные specs.</p>
+      <p>Хранит только <strong>изменения</strong>. Маркеры: ADDED / MODIFIED / REMOVED. При archive мержится в основные specs.</p>
       <div class="note">Формат <code>The system SHALL...</code> — стандарт IEEE 830. SHALL = обязательно, SHOULD = рекомендуется, MAY = опционально.</div>
       <div class="cb"># Delta for UI
 
@@ -405,96 +386,65 @@ The system SHALL allow users to choose between light and dark themes.
 - GIVEN пользователь открыл настройки
 - WHEN выбирает "Dark mode"
 - THEN интерфейс переключается на тёмную тему
-- AND выбор сохраняется между сессиями
-
-#### Scenario: System preference detection
-- GIVEN prefers-color-scheme: dark в ОС
-- WHEN пользователь первый раз открывает приложение
-- THEN применяется тёмная тема автоматически</div>
+- AND выбор сохраняется между сессиями</div>
 
       <h2>design.md — Технические решения</h2>
-      <p>Архитектурный подход, выбор инструментов, компромиссы. Необязателен для простых задач.</p>
       <div class="cb"># Design: Add Dark Mode
 
 ## Approach
 CSS custom properties для тем, React Context для состояния.
 
 ## Key Decisions
-- **CSS variables, не CSS-in-JS** — нет runtime overhead,
-  нативная поддержка system preference через prefers-color-scheme
-- **localStorage, не backend** — не требует auth, мгновенный отклик
+- CSS variables, не CSS-in-JS — нет runtime overhead
+- localStorage, не backend — не требует auth
 
 ## Sequence
-User clicks toggle
-  → ThemeContext.toggle()
+User clicks toggle → ThemeContext.toggle()
   → localStorage.set('theme', value)
-  → CSS class on &lt;html&gt;
-  → Все компоненты реагируют через CSS vars</div>
+  → CSS class on &lt;html&gt;</div>
 
       <h2>tasks.md — Чеклист реализации</h2>
-      <p>AI читает этот файл при <code>/opsx:apply</code> и выполняет задачи по порядку, ставя галочки.</p>
+      <p>AI читает этот файл при <code>/opsx:apply</code> и выполняет задачи по порядку.</p>
       <div class="cb"># Tasks: Add Dark Mode
 
 ## Phase 1: Core Infrastructure
-- [ ] 1.1 Создать ThemeContext с toggle() и defaultTheme
+- [ ] 1.1 Создать ThemeContext с toggle()
 - [ ] 1.2 Добавить CSS custom properties в globals.css
 - [ ] 1.3 Обернуть App в ThemeProvider
 
-## Phase 2: UI Components
-- [ ] 2.1 Создать компонент ThemeToggle (иконка sun/moon)
-- [ ] 2.2 Добавить ThemeToggle в Header
-- [ ] 2.3 Подключить localStorage persistence
+## Phase 2: UI
+- [ ] 2.1 Создать компонент ThemeToggle
+- [ ] 2.2 Добавить в Header
+- [ ] 2.3 Подключить localStorage
 
 ## Phase 3: Tests
 - [ ] 3.1 Unit-тест для ThemeContext
-- [ ] 3.2 E2E: переключение темы сохраняется после reload</div>
+- [ ] 3.2 E2E: тема сохраняется после reload</div>
     </div>
 
     <!-- КОМАНДЫ -->
     <div class="pane" id="pane-commands">
       <h1>Команды OPSX</h1>
-
-      <h2>Core-профиль (активен по умолчанию)</h2>
-      <div class="tbl-wrap"><table>
+      <h2>Core-профиль (по умолчанию)</h2>
+      <div class="tbl"><table>
         <thead><tr><th>Команда</th><th>Роль</th><th>Что делает</th><th>Когда</th></tr></thead>
         <tbody>
-          <tr>
-            <td><code>/opsx:explore</code></td>
-            <td><span class="badge b-blue">Thinking</span></td>
-            <td>Режим обсуждения без генерации артефактов. AI изучает кодовую базу, задаёт уточняющие вопросы. Код не пишется.</td>
-            <td>Перед началом, для проработки ТЗ</td>
-          </tr>
-          <tr>
-            <td><code>/opsx:propose &lt;name&gt;</code></td>
-            <td><span class="badge b-purple">Планирование</span></td>
-            <td>Создаёт папку изменения + сразу все 4 артефакта: proposal, specs, design, tasks за один шаг.</td>
-            <td>Когда понимание есть, нужно создать всё быстро</td>
-          </tr>
-          <tr>
-            <td><code>/opsx:apply [name]</code></td>
-            <td><span class="badge b-amber">Реализация</span></td>
-            <td>Читает tasks.md, выполняет задачи по порядку, ставит [x]. Если name не указан — определяет из контекста.</td>
-            <td>После ревью артефактов</td>
-          </tr>
-          <tr>
-            <td><code>/opsx:archive [name]</code></td>
-            <td><span class="badge b-green">Завершение</span></td>
-            <td>Мержит delta-specs в openspec/specs/. Перемещает папку в archive/ с датой.</td>
-            <td>После успешного verify</td>
-          </tr>
+          <tr><td><code>/opsx:explore</code></td><td><span class="badge b-blue">Thinking</span></td><td>Режим обсуждения без генерации артефактов. AI изучает кодовую базу, задаёт вопросы. Код не пишется.</td><td>Проработка ТЗ</td></tr>
+          <tr><td><code>/opsx:propose &lt;name&gt;</code></td><td><span class="badge b-purple">Планирование</span></td><td>Создаёт папку + все 4 артефакта за один шаг: proposal, specs, design, tasks.</td><td>Когда понимание есть</td></tr>
+          <tr><td><code>/opsx:apply [name]</code></td><td><span class="badge b-amber">Реализация</span></td><td>Читает tasks.md, выполняет по порядку, ставит [x]. Name определяет из контекста если не указан.</td><td>После ревью артефактов</td></tr>
+          <tr><td><code>/opsx:archive [name]</code></td><td><span class="badge b-green">Завершение</span></td><td>Мержит delta-specs в openspec/specs/. Перемещает папку в archive/ с датой.</td><td>После verify</td></tr>
         </tbody>
       </table></div>
-
       <h2>Expanded-профиль (дополнительно)</h2>
-      <div class="tbl-wrap"><table>
+      <div class="tbl"><table>
         <thead><tr><th>Команда</th><th>Роль</th><th>Что делает</th></tr></thead>
         <tbody>
-          <tr><td><code>/opsx:new &lt;name&gt;</code></td><td><span class="badge b-gray">Заготовка</span></td><td>Только создаёт папку и .openspec.yaml. Артефакты не генерирует — первый шаг пошагового режима.</td></tr>
-          <tr><td><code>/opsx:continue</code></td><td><span class="badge b-blue">Шаг</span></td><td>Создаёт один следующий незаблокированный артефакт. Читает граф зависимостей и берёт следующий доступный.</td></tr>
+          <tr><td><code>/opsx:new &lt;name&gt;</code></td><td><span class="badge b-gray">Заготовка</span></td><td>Только создаёт папку и .openspec.yaml. Артефакты не генерирует.</td></tr>
+          <tr><td><code>/opsx:continue</code></td><td><span class="badge b-blue">Шаг</span></td><td>Создаёт один следующий незаблокированный артефакт. Читает граф зависимостей.</td></tr>
           <tr><td><code>/opsx:ff [name]</code></td><td><span class="badge b-purple">Fast-forward</span></td><td>Генерирует все оставшиеся артефакты сразу. Используется после new.</td></tr>
-          <tr><td><code>/opsx:verify</code></td><td><span class="badge b-teal">Валидация</span></td><td>Проверяет: все задачи выполнены, код соответствует specs, design-решения отражены в коде.</td></tr>
-          <tr><td><code>/opsx:sync</code></td><td><span class="badge b-amber">Синхронизация</span></td><td>Обновляет specs если реализация пошла не по плану. Актуализирует дельту.</td></tr>
-          <tr><td><code>/opsx:bulk-archive</code></td><td><span class="badge b-gray">Пакет</span></td><td>Архивирует несколько завершённых изменений сразу. Автоматически разрешает конфликты в specs по хронологии.</td></tr>
+          <tr><td><code>/opsx:verify</code></td><td><span class="badge b-teal">Валидация</span></td><td>Проверяет: все задачи выполнены, код соответствует specs, design отражён в коде.</td></tr>
+          <tr><td><code>/opsx:sync</code></td><td><span class="badge b-amber">Синхронизация</span></td><td>Обновляет specs если реализация пошла не по плану.</td></tr>
+          <tr><td><code>/opsx:bulk-archive</code></td><td><span class="badge b-gray">Пакет</span></td><td>Архивирует несколько завершённых изменений сразу. Разрешает конфликты автоматически.</td></tr>
           <tr><td><code>/opsx:onboard</code></td><td><span class="badge b-coral">Обучение</span></td><td>Интерактивный тьюториал на реальной кодовой базе. 11 фаз, ~15 минут.</td></tr>
         </tbody>
       </table></div>
@@ -503,7 +453,6 @@ User clicks toggle
     <!-- WORKFLOW -->
     <div class="pane" id="pane-workflow">
       <h1>Workflow и flow</h1>
-
       <h2>Граф зависимостей артефактов</h2>
       <div class="flow">
         <div class="fbox" style="background:var(--blue-bg);border-color:var(--blue);color:var(--blue-text)">proposal.md</div>
@@ -512,13 +461,11 @@ User clicks toggle
         <span class="farr">→</span>
         <div class="fbox" style="background:var(--green-bg);border-color:var(--teal);color:var(--green-text)">design.md</div>
       </div>
-      <div class="flow" style="padding-left:122px">
+      <div class="flow" style="padding-left:128px">
         <span class="farr">↳</span>
         <div class="fbox" style="background:var(--amber-bg);border-color:var(--amber);color:var(--amber-text)">tasks.md</div>
         <span style="font-size:12px;color:var(--text3);margin-left:6px">(блокируется до готовности specs)</span>
       </div>
-      <p><code>/opsx:continue</code> читает этот граф и всегда берёт следующий доступный шаг автоматически.</p>
-
       <h2>Core-путь (быстрый)</h2>
       <div class="flow">
         <div class="fbox">/opsx:explore</div><span class="farr">→</span>
@@ -527,7 +474,6 @@ User clicks toggle
         <div class="fbox">/opsx:apply</div><span class="farr">→</span>
         <div class="fbox">/opsx:archive</div>
       </div>
-
       <h2>Expanded-путь (с контролем каждого шага)</h2>
       <div class="flow">
         <div class="fbox">/opsx:explore</div><span class="farr">→</span>
@@ -539,88 +485,43 @@ User clicks toggle
         <div class="fbox">/opsx:verify</div><span class="farr">→</span>
         <div class="fbox">/opsx:archive</div>
       </div>
-
       <hr>
-
       <h2>Сценарий: пришло ТЗ → спецификация → код</h2>
-      <div class="step">
-        <div class="snum" style="background:var(--teal-bg);color:var(--teal-text)">1</div>
-        <div><div class="stitle">Инициализация <span style="font-size:11px;color:var(--text3);font-weight:400">(один раз на проект)</span></div><div class="sdesc"><code>openspec init</code> → выбираешь AI-инструмент → создаётся вся структура и skills</div></div>
-      </div>
-      <div class="step">
-        <div class="snum" style="background:var(--blue-bg);color:var(--blue-text)">2</div>
-        <div><div class="stitle">/opsx:explore — вставляешь ТЗ</div><div class="sdesc">AI читает кодовую базу, задаёт уточняющие вопросы, выясняет edge cases. Никакого кода ещё нет. Только выравнивание понимания.</div></div>
-      </div>
-      <div class="step">
-        <div class="snum" style="background:var(--purple-bg);color:var(--purple-text)">3</div>
-        <div><div class="stitle">/opsx:propose user-auth — создаём все артефакты</div><div class="sdesc">AI использует контекст из explore-сессии. Создаёт proposal, specs, design, tasks за один шаг.</div></div>
-      </div>
-      <div class="step">
-        <div class="snum" style="background:var(--gray-bg);color:var(--gray-text)">4</div>
-        <div><div class="stitle">Ревью артефактов руками</div><div class="sdesc">Открываешь proposal.md, specs, tasks — читаешь, правишь. Просишь AI уточнить конкретный артефакт. Это самый важный этап.</div></div>
-      </div>
-      <div class="step">
-        <div class="snum" style="background:var(--amber-bg);color:var(--amber-text)">5</div>
-        <div><div class="stitle">/opsx:apply — реализация</div><div class="sdesc">AI идёт по tasks.md и выполняет пункт за пунктом. Ставит [x]. Перед этим шагом — очисти контекст чата.</div></div>
-      </div>
-      <div class="step">
-        <div class="snum" style="background:var(--green-bg);color:var(--green-text)">6</div>
-        <div><div class="stitle">/opsx:verify → /opsx:archive</div><div class="sdesc">Verify проверяет соответствие кода specs. Archive мержит дельту в основные specs и кладёт изменение в архив.</div></div>
-      </div>
-
-      <div class="tip">Делай explore и propose в одной сессии — AI использует живой контекст разговора. Если начинаешь новую сессию — кратко пересказывай что решили в explore.</div>
-
-      <h2>Параллельная работа над несколькими задачами</h2>
-      <div class="cb"><span class="c"># Задача 1 прервана → начали срочный фикс</span>
-/opsx:new fix-urgent-bug
-/opsx:ff
-/opsx:apply
-/opsx:archive
-
-<span class="c"># Возвращаемся к задаче 1</span>
-/opsx:apply feature-dark-mode   <span class="c">← AI подхватит с того места где остановился</span>
-
-<span class="c"># Завершили несколько задач → архивируем пакетом</span>
-/opsx:bulk-archive</div>
+      <div class="step"><div class="snum" style="background:var(--teal-bg);color:var(--teal-text)">1</div><div><div class="stitle">Инициализация <span style="font-size:11px;color:var(--text3);font-weight:400">(один раз на проект)</span></div><div class="sdesc"><code>openspec init</code> → выбираешь AI-инструмент → создаётся вся структура</div></div></div>
+      <div class="step"><div class="snum" style="background:var(--blue-bg);color:var(--blue-text)">2</div><div><div class="stitle">/opsx:explore — вставляешь ТЗ</div><div class="sdesc">AI читает кодовую базу, задаёт уточняющие вопросы, выясняет edge cases. Кода ещё нет.</div></div></div>
+      <div class="step"><div class="snum" style="background:var(--purple-bg);color:var(--purple-text)">3</div><div><div class="stitle">/opsx:propose name — создаём все артефакты</div><div class="sdesc">AI использует контекст из explore-сессии. Создаёт proposal, specs, design, tasks за один шаг.</div></div></div>
+      <div class="step"><div class="snum" style="background:var(--gray-bg);color:var(--gray-text)">4</div><div><div class="stitle">Ревью артефактов руками</div><div class="sdesc">Открываешь proposal.md, specs, tasks — читаешь, правишь. Просишь AI уточнить конкретный файл.</div></div></div>
+      <div class="step"><div class="snum" style="background:var(--amber-bg);color:var(--amber-text)">5</div><div><div class="stitle">/opsx:apply — реализация</div><div class="sdesc">AI идёт по tasks.md, выполняет задачи, ставит [x]. Перед этим — очисти контекст чата.</div></div></div>
+      <div class="step"><div class="snum" style="background:var(--green-bg);color:var(--green-text)">6</div><div><div class="stitle">/opsx:verify → /opsx:archive</div><div class="sdesc">Verify проверяет соответствие кода specs. Archive мержит дельту и кладёт изменение в архив.</div></div></div>
+      <div class="tip">Делай explore и propose в одной сессии — AI использует живой контекст разговора. Если начинаешь новую сессию — кратко пересказывай что решили.</div>
     </div>
 
     <!-- ПРОФИЛИ -->
     <div class="pane" id="pane-profiles">
       <h1>Профили workflow</h1>
-      <p>Профиль определяет какой набор команд и skills будет установлен в проекте.</p>
-
-      <div class="tbl-wrap"><table>
-        <thead><tr><th>Профиль</th><th>Команды</th><th>Когда использовать</th></tr></thead>
+      <p>Профиль определяет какой набор команд и skills будет установлен.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>Профиль</th><th>Команды</th><th>Когда</th></tr></thead>
         <tbody>
-          <tr>
-            <td><span class="badge b-teal">core</span> <span style="font-size:11px;color:var(--text3)">(по умолчанию)</span></td>
-            <td><code>explore</code> · <code>propose</code> · <code>apply</code> · <code>archive</code></td>
-            <td>Быстрый старт, небольшие задачи, один шаг от идеи до кода</td>
-          </tr>
-          <tr>
-            <td><span class="badge b-purple">expanded</span></td>
-            <td>core + <code>new</code> · <code>continue</code> · <code>ff</code> · <code>verify</code> · <code>sync</code> · <code>bulk-archive</code> · <code>onboard</code></td>
-            <td>Полный контроль, параллельные задачи, командная работа</td>
-          </tr>
+          <tr><td><span class="badge b-teal">core</span> (по умолчанию)</td><td><code>explore</code> · <code>propose</code> · <code>apply</code> · <code>archive</code></td><td>Быстрый старт, небольшие задачи</td></tr>
+          <tr><td><span class="badge b-purple">expanded</span></td><td>core + <code>new</code> · <code>continue</code> · <code>ff</code> · <code>verify</code> · <code>sync</code> · <code>bulk-archive</code> · <code>onboard</code></td><td>Полный контроль, команды</td></tr>
         </tbody>
       </table></div>
-
-      <h2>Как переключить профиль</h2>
-      <div class="cb"><span class="c"># Шаг 1: выбрать профиль</span>
+      <h2>Как переключить</h2>
+      <div class="cb"><span class="c"># Выбрать профиль</span>
 openspec config profile
 
-<span class="c"># Шаг 2: применить — регенерирует skills и команды</span>
+<span class="c"># Применить — регенерирует skills и команды</span>
 openspec update</div>
-
-      <h2>Выбор команд по ситуации</h2>
-      <div class="tbl-wrap"><table>
-        <thead><tr><th>Ситуация</th><th>Рекомендуемый путь</th></tr></thead>
+      <h2>Выбор команды по ситуации</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>Ситуация</th><th>Команды</th></tr></thead>
         <tbody>
-          <tr><td>Пришло ТЗ, нужно проработать и сразу создать specs</td><td><code>explore</code> → <code>propose</code></td></tr>
-          <tr><td>Хочешь контролировать каждый артефакт по отдельности</td><td><code>new</code> → <code>continue</code> × N</td></tr>
-          <tr><td>Создал заготовку, хочешь сгенерировать всё быстро</td><td><code>new</code> → <code>ff</code></td></tr>
+          <tr><td>Пришло ТЗ, нужна полная спека</td><td><code>explore</code> → <code>propose</code></td></tr>
+          <tr><td>Контролировать каждый артефакт</td><td><code>new</code> → <code>continue</code> × N</td></tr>
+          <tr><td>Создал заготовку, сгенерировать всё</td><td><code>new</code> → <code>ff</code></td></tr>
           <tr><td>Реализация разошлась с планом</td><td><code>sync</code> → <code>apply</code></td></tr>
-          <tr><td>Несколько задач завершены одновременно</td><td><code>bulk-archive</code></td></tr>
+          <tr><td>Несколько задач завершены</td><td><code>bulk-archive</code></td></tr>
           <tr><td>Первый раз в OpenSpec</td><td><code>onboard</code></td></tr>
         </tbody>
       </table></div>
@@ -629,19 +530,17 @@ openspec update</div>
     <!-- CONFIG -->
     <div class="pane" id="pane-config">
       <h1>openspec/config.yaml</h1>
-      <p>Главный файл конфигурации проекта. Инжектируется в каждый запрос к AI при генерации артефактов. Именно здесь OpenSpec узнаёт о стеке, архитектуре и соглашениях.</p>
-
+      <p>Главный файл конфигурации. Инжектируется в каждый запрос к AI при генерации артефактов.</p>
       <h2>Три слоя</h2>
-      <div class="tbl-wrap"><table>
+      <div class="tbl"><table>
         <thead><tr><th>Ключ</th><th>Что делает</th><th>Куда инжектируется</th></tr></thead>
         <tbody>
           <tr><td><code>schema</code></td><td>Дефолтная схема workflow. Убирает --schema из каждой команды.</td><td>При каждой команде</td></tr>
-          <tr><td><code>context</code></td><td>Стек, архитектура, соглашения. «Мировоззрение» проекта. Макс. 50KB.</td><td>Во ВСЕ артефакты</td></tr>
-          <tr><td><code>rules</code></td><td>Правила для конкретных артефактов — proposal, specs, design, tasks.</td><td>Только в нужный артефакт</td></tr>
+          <tr><td><code>context</code></td><td>Стек, архитектура, соглашения проекта. Макс. 50KB.</td><td>Во ВСЕ артефакты</td></tr>
+          <tr><td><code>rules</code></td><td>Правила для конкретных артефактов.</td><td>Только в нужный</td></tr>
         </tbody>
       </table></div>
-
-      <h2>Полный пример (Laravel-проект)</h2>
+      <h2>Полный пример (Laravel)</h2>
       <div class="cb"><span class="k">schema</span>: spec-driven
 
 <span class="k">context</span>: |
@@ -651,197 +550,128 @@ openspec update</div>
   Database: PostgreSQL, Eloquent ORM
   API style: REST JSON API + web routes через Inertia
   Auth: Laravel Sanctum, роли через Spatie Permission
-  Testing: Pest для unit/feature, Playwright для e2e
+  Testing: Pest unit/feature, Playwright e2e
   Style: Laravel Pint, strict PHP types
   Architecture: Service Layer поверх MVC
   Conventions:
     - Backwards compatibility обязательна для всех public API
-    - Все новые эндпоинты — FormRequest обязателен
-    - Feature-тест обязателен для каждого нового эндпоинта
+    - Все новые эндпоинты требуют FormRequest
+    - Feature-тест обязателен для каждого эндпоинта
 
 <span class="k">rules</span>:
   <span class="v">proposal</span>:
     - Указывать нужны ли миграции и сидеры
     - Указывать план отката для рискованных изменений
-    - Отмечать если изменение затрагивает API-контракт
   <span class="v">specs</span>:
     - Формат Given/When/Then для всех сценариев
     - Покрывать авторизацию (Policy/Gate) для каждого действия
-    - Указывать HTTP-метод и маршрут для API-эндпоинтов
   <span class="v">design</span>:
     - Указывать какие модели/relations затрагиваются
-    - Описывать структуру миграций при изменениях схемы БД
+    - Описывать структуру миграций при изменениях схемы
   <span class="v">tasks</span>:
     - Порядок: миграция → модель → сервис → контроллер → тест
     - Максимум 2 часа на одну задачу</div>
-
-      <h2>Что писать в context</h2>
-      <div class="tbl-wrap"><table>
-        <thead><tr><th>Поле</th><th>Пример</th><th>Важность</th></tr></thead>
-        <tbody>
-          <tr><td>Language</td><td><code>Russian. All artifacts must be written in Russian.</code></td><td><span class="badge b-coral">Критично</span></td></tr>
-          <tr><td>Tech stack</td><td><code>PHP 8.3, Laravel 11, Vue 3</code></td><td><span class="badge b-coral">Критично</span></td></tr>
-          <tr><td>Database</td><td><code>PostgreSQL, Eloquent ORM</code></td><td><span class="badge b-purple">Важно</span></td></tr>
-          <tr><td>Auth</td><td><code>Sanctum, роли: admin/manager/user</code></td><td><span class="badge b-purple">Важно</span></td></tr>
-          <tr><td>Architecture</td><td><code>Service Layer, feature-based folders</code></td><td><span class="badge b-purple">Важно</span></td></tr>
-          <tr><td>Testing</td><td><code>Pest unit + Playwright e2e</code></td><td><span class="badge b-teal">Полезно</span></td></tr>
-          <tr><td>Conventions</td><td>Соглашения которые не видны из кода</td><td><span class="badge b-teal">Полезно</span></td></tr>
-        </tbody>
-      </table></div>
-
-      <div class="warn">Будь лаконичен — context инжектируется в каждый запрос. Пиши только то, что реально влияет на архитектурные решения. Не пересказывай содержимое файлов.</div>
-
+      <div class="warn">Будь лаконичен — context инжектируется в каждый запрос. Только то, что реально влияет на архитектурные решения.</div>
       <h2>Создание через AI</h2>
-      <p>Самый удобный способ — попросить AI проанализировать кодовую базу и сгенерировать файл:</p>
-      <div class="cb">Проанализируй кодовую базу проекта и создай openspec/config.yaml.
-Прочитай: composer.json, package.json, .env.example, app/, routes/,
-database/migrations/ (2-3 последних), config/auth.php.
-Заполни все поля которые найдёшь, если что-то не нашёл — пиши N/A.
+      <div class="cb">Проанализируй кодовую базу и создай openspec/config.yaml.
+Прочитай: composer.json, package.json, .env.example,
+app/, routes/, database/migrations/ (2-3 последних).
+Если что-то не нашёл — пиши N/A.
 Артефакты пиши на русском языке.</div>
     </div>
 
     <!-- CLI -->
     <div class="pane" id="pane-cli">
       <h1>CLI-команды</h1>
-      <p>Терминальные команды для управления проектом, валидации и обслуживания. Дополняют slash-команды AI.</p>
-
+      <p>Терминальные команды для управления проектом. Дополняют slash-команды AI.</p>
       <h2>Инициализация и обновление</h2>
-      <div class="tbl-wrap"><table>
+      <div class="tbl"><table>
         <thead><tr><th>Команда</th><th>Что делает</th></tr></thead>
         <tbody>
-          <tr><td><code>openspec init</code></td><td>Инициализация проекта. Создаёт структуру, настраивает AI-инструмент.</td></tr>
-          <tr><td><code>openspec init --tools claude,cursor</code></td><td>Не-интерактивная инициализация для конкретных инструментов.</td></tr>
-          <tr><td><code>openspec init --tools all</code></td><td>Настроить все поддерживаемые инструменты.</td></tr>
-          <tr><td><code>openspec update</code></td><td>Регенерировать skills и команды после обновления пакета или смены профиля.</td></tr>
+          <tr><td><code>openspec init</code></td><td>Создаёт структуру, настраивает AI-инструмент.</td></tr>
+          <tr><td><code>openspec init --tools claude,cursor</code></td><td>Не-интерактивная инициализация.</td></tr>
+          <tr><td><code>openspec update</code></td><td>Регенерировать skills и команды после обновления.</td></tr>
           <tr><td><code>openspec config profile</code></td><td>Переключить профиль: core ↔ expanded.</td></tr>
-          <tr><td><code>openspec config list</code></td><td>Показать текущую конфигурацию. Предупреждает о расхождении глобал/проект.</td></tr>
+          <tr><td><code>openspec config list</code></td><td>Показать конфигурацию. Предупреждает о drift.</td></tr>
         </tbody>
       </table></div>
-
       <h2>Навигация и просмотр</h2>
-      <div class="tbl-wrap"><table>
+      <div class="tbl"><table>
         <thead><tr><th>Команда</th><th>Что делает</th></tr></thead>
         <tbody>
           <tr><td><code>openspec list</code></td><td>Все активные изменения.</td></tr>
-          <tr><td><code>openspec list --specs</code></td><td>Все спецификации в openspec/specs/.</td></tr>
-          <tr><td><code>openspec list --json</code></td><td>JSON-вывод для скриптов.</td></tr>
-          <tr><td><code>openspec show &lt;name&gt;</code></td><td>Детали конкретного изменения: статус артефактов, прогресс tasks.</td></tr>
+          <tr><td><code>openspec list --specs</code></td><td>Все спецификации.</td></tr>
+          <tr><td><code>openspec show &lt;name&gt;</code></td><td>Детали изменения: статус артефактов, прогресс tasks.</td></tr>
           <tr><td><code>openspec view</code></td><td>Интерактивный дашборд в терминале.</td></tr>
         </tbody>
       </table></div>
-
-      <h2>Валидация и отладка</h2>
-      <div class="tbl-wrap"><table>
+      <h2>Отладка</h2>
+      <div class="tbl"><table>
         <thead><tr><th>Команда</th><th>Что делает</th></tr></thead>
         <tbody>
-          <tr><td><code>openspec validate &lt;name&gt;</code></td><td>Проверить форматирование specs конкретного изменения.</td></tr>
-          <tr><td><code>openspec instructions proposal --change &lt;name&gt;</code></td><td>Показать что именно AI получит при генерации — для отладки config.</td></tr>
+          <tr><td><code>openspec validate &lt;name&gt;</code></td><td>Проверить форматирование specs.</td></tr>
+          <tr><td><code>openspec instructions proposal --change &lt;name&gt;</code></td><td>Показать что AI получит — для отладки config.</td></tr>
           <tr><td><code>openspec schema list</code></td><td>Список доступных схем.</td></tr>
-          <tr><td><code>openspec schema validate &lt;name&gt;</code></td><td>Валидация кастомной схемы.</td></tr>
-          <tr><td><code>openspec feedback</code></td><td>Отправить фидбек напрямую в GitHub Issues.</td></tr>
+          <tr><td><code>openspec feedback</code></td><td>Отправить фидбек в GitHub Issues.</td></tr>
         </tbody>
       </table></div>
-
-      <div class="tip"><code>openspec instructions proposal --change test</code> — лучший способ проверить что AI реально получает. Запускай после изменения config.yaml.</div>
+      <div class="tip"><code>openspec instructions proposal --change test</code> — лучший способ проверить что AI реально получает после изменения config.yaml.</div>
     </div>
 
-    <!-- COMPARE -->
+    <!-- СРАВНЕНИЕ -->
     <div class="pane" id="pane-compare">
       <h1>Сравнение с альтернативами</h1>
       <div class="vs-grid">
-        <div class="card">
-          <div class="card-title"><span class="badge b-teal">OpenSpec</span></div>
-          <div class="card-desc">
-            ✓ Лёгкий — минимальный процесс<br>
-            ✓ Brownfield-first — для живых проектов<br>
-            ✓ Fluid — нет жёстких фаз<br>
-            ✓ 20+ AI-инструментов<br>
-            ✓ Specs живут в репозитории<br>
-            ✓ Кастомные схемы workflow<br>
-            ✓ MIT, open source
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-title"><span class="badge b-gray">Spec Kit (GitHub)</span></div>
-          <div class="card-desc">
-            ✓ Очень детальный<br>
-            ✗ Тяжёлый, много Markdown<br>
-            ✗ Жёсткие фазовые ворота<br>
-            ✗ Python setup<br>
-            ✗ Сложно итерировать
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-title"><span class="badge b-gray">Kiro (AWS)</span></div>
-          <div class="card-desc">
-            ✓ Мощный инструмент<br>
-            ✗ Привязан к их IDE<br>
-            ✗ Только Claude-модели<br>
-            ✗ Vendor lock-in
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-title"><span class="badge b-gray">Без спецификаций</span></div>
-          <div class="card-desc">
-            ✗ AI интерпретирует по-своему<br>
-            ✗ Контекст умирает с сессией<br>
-            ✗ Непредсказуемые результаты<br>
-            ✗ Нет документации намерений
-          </div>
-        </div>
+        <div class="card"><div class="card-title"><span class="badge b-teal">OpenSpec</span></div><div class="card-desc">✓ Лёгкий — минимальный процесс<br>✓ Brownfield-first<br>✓ Fluid — нет жёстких фаз<br>✓ 20+ AI-инструментов<br>✓ Specs в репозитории<br>✓ Кастомные схемы<br>✓ MIT, open source</div></div>
+        <div class="card"><div class="card-title"><span class="badge b-gray">Spec Kit (GitHub)</span></div><div class="card-desc">✓ Очень детальный<br>✗ Тяжёлый, много Markdown<br>✗ Жёсткие фазовые ворота<br>✗ Python setup<br>✗ Сложно итерировать</div></div>
+        <div class="card"><div class="card-title"><span class="badge b-gray">Kiro (AWS)</span></div><div class="card-desc">✓ Мощный инструмент<br>✗ Привязан к их IDE<br>✗ Только Claude-модели<br>✗ Vendor lock-in</div></div>
+        <div class="card"><div class="card-title"><span class="badge b-gray">Без спецификаций</span></div><div class="card-desc">✗ AI интерпретирует по-своему<br>✗ Контекст умирает с сессией<br>✗ Непредсказуемые результаты<br>✗ Нет документации намерений</div></div>
       </div>
     </div>
 
     <!-- FAQ -->
     <div class="pane" id="pane-faq">
-      <h1>Часто задаваемые вопросы</h1>
-      <div id="faqList">
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">Это же просто waterfall?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Нет. Waterfall ломается из-за жёстких фаз и месяцев планирования. OpenSpec — это 10 минут на alignment перед началом. Когда что-то меняется — обновляешь spec и продолжаешь. Никаких фазовых ворот, никаких «нельзя вернуться назад».</div></div>
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">Чем отличается от встроенного plan mode в AI?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Plan mode — для одной сессии. OpenSpec — для планов которые живут несколько сессий, шерятся с командой и проходят через весь lifecycle разработки. Контекст не умирает когда закрываешь вкладку.</div></div>
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">Можно ли на существующем (brownfield) проекте?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Да, именно для этого и создан. Specs создаются по мере появления новых задач. Не нужно описывать весь существующий код сразу — это бессмысленная трата времени. Начни с первой новой задачи.</div></div>
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">Что если поменял AI-инструмент?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Specs и changes в openspec/ работают с любым инструментом — они просто Markdown-файлы. Запусти openspec update для нового инструмента и получишь нужные skills и slash-команды.</div></div>
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">Нужен ли API-ключ или MCP-сервер?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Нет. OpenSpec работает через slash-команды и файлы в репозитории. Никаких API-ключей, никаких MCP-серверов — просто npm-пакет и Markdown-файлы.</div></div>
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">Как командная работа?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Specs и changes живут в репозитории — коллаборация через git: PR, reviews, стандартный workflow. Reviewer видит дельту требований в PR ещё до того как смотрит на код.</div></div>
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">Какую модель использовать?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Официальная рекомендация: Claude Opus 4.5 или GPT 5 для планирования и реализации. Качество артефактов напрямую зависит от мощи модели. Слабые модели дают размытые specs.</div></div>
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">OpenSpec собирает данные о проекте?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Только имена команд и версию пакета — для понимания паттернов использования. Никаких аргументов, путей, содержимого файлов и PII. Отключить: export OPENSPEC_TELEMETRY=0</div></div>
-        <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span class="faq-q-text">Я vibe-кодер — это для меня?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Честный ответ: зависит. Если ищешь магический инструмент который всё сделает сам — не то. Specs работают только если ты их читаешь, думаешь и работаешь с ними. Встречай инструмент на полпути.</div></div>
-      </div>
+      <h1>FAQ</h1>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span>Это же просто waterfall?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Нет. Waterfall ломается из-за жёстких фаз и месяцев планирования. OpenSpec — это 10 минут на alignment перед началом. Когда что-то меняется — обновляешь spec и продолжаешь. Никаких фазовых ворот.</div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span>Чем отличается от встроенного plan mode в AI?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Plan mode — для одной сессии. OpenSpec — для планов которые живут несколько сессий, шерятся с командой и проходят через весь lifecycle разработки. Контекст не умирает когда закрываешь вкладку.</div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span>Можно ли на существующем проекте?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Да, именно для этого и создан. Specs создаются по мере появления новых задач. Не нужно описывать весь существующий код сразу — это бессмысленная трата времени.</div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span>Что если поменял AI-инструмент?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Specs и changes в openspec/ работают с любым инструментом — они просто Markdown-файлы. Запусти openspec update для нового инструмента.</div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span>Нужен API-ключ или MCP-сервер?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Нет. OpenSpec работает через slash-команды и файлы в репозитории. Просто npm-пакет и Markdown-файлы.</div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span>Как командная работа?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Specs и changes живут в репозитории — коллаборация через git: PR, reviews, стандартный workflow. Reviewer видит дельту требований ещё до просмотра кода.</div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span>Какую модель использовать?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Официальная рекомендация: Claude Opus 4.5 или GPT 5. Качество артефактов напрямую зависит от мощи модели.</div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q"><span>OpenSpec собирает данные?</span><span class="faq-arrow">▶</span></div><div class="faq-a">Только имена команд и версию пакета. Никаких путей, содержимого файлов, PII. Отключить: <code>export OPENSPEC_TELEMETRY=0</code></div></div>
     </div>
 
   </main>
 </div>
 
-<footer class="footer">
-  <div>OpenSpec База знаний · Собрано на основе <a href="https://github.com/Fission-AI/OpenSpec" target="_blank">github.com/Fission-AI/OpenSpec</a> и <a href="https://openspec.dev" target="_blank">openspec.dev</a></div>
-  <div>MIT License · Fission AI</div>
-</footer>
+<div class="footer-wrap">
+  <div class="footer">
+    <div>OpenSpec База знаний · На основе <a href="https://github.com/Fission-AI/OpenSpec" target="_blank">github.com/Fission-AI/OpenSpec</a> и <a href="https://openspec.dev" target="_blank">openspec.dev</a></div>
+    <div>MIT License · Fission AI</div>
+  </div>
+</div>
 
 <script>
-  function nav(id, el) {
-    document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.getElementById('pane-' + id).classList.add('active');
-    el.classList.add('active');
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  }
-
-  function toggleFaq(el) {
-    el.classList.toggle('open');
-  }
-
-  function toggleTheme() {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    document.getElementById('themeBtn').textContent = isDark ? '🌙' : '☀️';
-    localStorage.setItem('theme', isDark ? 'light' : 'dark');
-  }
-
-  // Restore theme
-  const saved = localStorage.getItem('theme');
-  if (saved === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    document.getElementById('themeBtn').textContent = '☀️';
-  }
+function nav(id, el) {
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sb-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('pane-' + id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleFaq(el) { el.classList.toggle('open'); }
+function toggleTheme() {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+  document.getElementById('themeBtn').textContent = dark ? '🌙' : '☀️';
+  localStorage.setItem('os-theme', dark ? 'light' : 'dark');
+}
+const saved = localStorage.getItem('os-theme');
+if (saved === 'dark') {
+  document.documentElement.setAttribute('data-theme','dark');
+  document.getElementById('themeBtn').textContent = '☀️';
+}
 </script>
 </body>
 </html>
